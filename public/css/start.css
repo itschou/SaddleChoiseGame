@@ -1,0 +1,43 @@
+.tutorialTitle h1 {
+  color: #9f1817;
+}
+
+.tutorialTitle h4 {
+  font-size: small;
+  font-weight: bold;
+}
+
+.cardTexte {
+  font-family: "Open Sans", sans-serif;
+}
+
+.cardTexte h1 {
+  font-weight: bold;
+}
+
+.cardTexte h2 {
+  font-weight: lighter;
+}
+
+
+
+.cardNumber div {
+  background-color: #b9b9b9;
+}
+
+.cardNumber div:first-child {
+  background-color: #9f1817;
+}
+
+.confirmSession button {
+  font-family: "Open Sans", sans-serif;
+  background-color: #9f1817;
+  width: 150px;
+  height: 39px;
+  letter-spacing: 3px;
+}
+
+.confirmSession span {
+  width: 20px;
+  height: 1px;
+}

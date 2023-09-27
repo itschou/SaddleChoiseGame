@@ -1,0 +1,110 @@
+
+
+.tutorialMainDiv {
+  position: absolute; /* Position absolue pour le fond */
+  top: 0; /* Position en haut de la div parent */
+  left: 0; /* Position à gauche de la div parent */
+  width: 100%; /* Largeur à 100% pour couvrir toute la div parent */
+  height: 100%; /* Hauteur à 100% pour couvrir toute la div parent */
+  background-color: rgba(159, 23, 23, 0.726); /* Rouge avec une opacité de 0.3 (30%) */
+  
+}
+
+.tutorialText h1 {
+  width: 60%;
+  height: 35%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.tutorialText p {
+  width: 80%;
+  height: 33%;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+
+/* Animation d'entrée */
+.fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Animation de sortie */
+.fadeOut {
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* Animation clique souris */
+
+
+/* Définition de l'animation */
+@keyframes moveImage {
+  0% {
+    /* Position de départ */
+    transform: translate(0px, 0px);
+  }
+  50% {
+    /* Position d'arrivée */
+    transform: translate(-600px, 250px);
+  }
+  100% {
+    /* Position de départ (retour) */
+    transform: translate(0px, 0px);
+  }
+}
+
+/* Appliquez l'animation à l'élément que vous souhaitez animer */
+.image-animation {
+  position: absolute;
+  top: 300px;
+  right: 25px;
+  animation: moveImage 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Définition de l'animation */
+@keyframes clickEffect {
+  0%, 100% {
+    /* Position de départ et de fin */
+    transform: translate(0, 0);
+    scale: 100%;
+  }
+  50% {
+    /* Position de clic (vers le bas) */
+    transform: translate(0, 10px);
+    scale: 70%;
+  }
+}
+
+/* Appliquez l'animation à l'élément avec la classe .image-animation-static */
+.image-animation-static {
+  position: absolute;
+  top: 550px;
+  left: 45px;
+  animation: clickEffect 2s ease-in-out infinite;
+  /* Répétez l'animation une seule fois */
+}
+

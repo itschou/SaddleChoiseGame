@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+/* Désactiver le menu contextuel et les événements pointer sur iPad */
+@media (hover: none) {
+  /* Cette règle s'applique uniquement aux appareils sans hover (comme les iPads) */
+
+  /* Désactiver le menu contextuel */
+  body {
+    -webkit-touch-callout: none;
+  }
+
+  *{
+    touch-action: none;
+  }
+
+  
+}
+
+body {
+  font-size: 16px;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+/* Welcome Page */
+div.welcomeHeader {
+  background: #9f1817;
+  height: 200px;
+}
+.welcomeHeader p {
+  font-size: 14px;
+  font-family: "EB Garamond", serif;
+}
+.welcomeHeaderImage {
+  width: 190px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.welcomeMiddle h1 {
+  font-weight: bold;
+  font-size: 28px;
+  color: #9f1817;
+}
+
+.welcomeMiddle button {
+  background-color: #9f1817;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  width: 250px;
+  height: 60px;
+}
+
+.welcomeEnd {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.welcomeEnd p:first-child {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.welcomeEnd span {
+  color: #9f1817;
+}
+
+.welcomeCouronesTop {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: small;
+}
+
+.welcomeEndText{
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-size: 7px;
+  padding-top: 5px;
+  padding-right: 35px;
+}
+
+
+.cavalierImage {
+  touch-action: manipulation;
+}
+
