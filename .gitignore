@@ -1,0 +1,21 @@
+# Dossiers de production build
+.next/
+
+# Fichiers d'environnement locaux
+.env.local
+
+# Dossiers de cache ou temporaires
+.cache/
+.next-cache/
+out/
+
+# Fichiers de logs et de debug
+*.log
+*.debug
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+
+# Dossiers de modules
+/node_modules/
