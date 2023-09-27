@@ -13,6 +13,14 @@ type AppState = {
 };
 
 type ClassementState = string[];
+type ClassementStateItem = {
+  id: number;
+  lastName: string;
+  firstName: string;
+  imageURL: string;
+  score: string;
+  isActif: boolean;
+};
 
 const initialAppState: AppState[] = [...cardsStateData];
 
@@ -20,10 +28,13 @@ const AppStateContext = createContext<
   | {
       appState: AppState[];
       classementState: ClassementState;
+      classementStateItem: ClassementStateItem[];
       setAppState: React.Dispatch<React.SetStateAction<AppState[]>>;
       updateAddItemById: (id: number) => void;
       updateAddClassement: (nomCavalier: string) => void;
+      updateAddClassementItem: (item: ClassementStateItem) => void;
       updateRemoveClassement: () => void;
+      updateRemoveClassementItem: () => void;
     }
   | undefined
 >(undefined);
@@ -31,6 +42,8 @@ const AppStateContext = createContext<
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [appState, setAppState] = useState(() => initialAppState);
   const [classementState, setClassementState] = useState<ClassementState>([]);
+  const [classementStateItem, setClassementStateItem] =
+    useState<ClassementStateItem[]>([]);
 
   // useEffect(() => {
   //   console.log("Nouvel état : ", classementState);
@@ -63,15 +76,33 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const updateAddClassementItem = (item: ClassementStateItem) => {
+    setClassementStateItem((prevClassementState: ClassementStateItem[]) => [
+      ...prevClassementState,
+      item,
+    ]);
+  };
+
+  // Fonction pour mettre à jour l'état du classement (Supprimer un cavalier a la liste)
+  const updateRemoveClassementItem = () => {
+    setClassementStateItem(
+      (prevClassementState: ClassementStateItem[]) =>
+        prevClassementState.slice(0, -1) // Supprime le dernier élément
+    );
+  };
+
   return (
     <AppStateContext.Provider
       value={{
         appState,
         classementState,
+        classementStateItem,
         setAppState,
         updateAddItemById,
         updateAddClassement,
-        updateRemoveClassement
+        updateRemoveClassement,
+        updateAddClassementItem,
+        updateRemoveClassementItem,
       }}
     >
       {children}

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -14,7 +14,6 @@
   }
 }
 
-
 /* Désactiver le menu contextuel et les événements pointer sur iPad */
 @media (hover: none) {
   /* Cette règle s'applique uniquement aux appareils sans hover (comme les iPads) */
@@ -22,13 +21,14 @@
   /* Désactiver le menu contextuel */
   body {
     -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
   }
 
-  *{
+  * {
     touch-action: none;
   }
-
-  
 }
 
 body {
@@ -73,7 +73,7 @@ div.welcomeHeader {
 }
 
 .welcomeEnd p:first-child {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -84,21 +84,19 @@ div.welcomeHeader {
 }
 
 .welcomeCouronesTop {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: small;
 }
 
-.welcomeEndText{
-  font-family: 'Open Sans', sans-serif;
+.welcomeEndText {
+  font-family: "Open Sans", sans-serif;
   font-style: italic;
   font-size: 7px;
   padding-top: 5px;
   padding-right: 35px;
 }
 
-
 .cavalierImage {
   touch-action: manipulation;
 }
-

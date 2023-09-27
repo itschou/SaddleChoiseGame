@@ -9,23 +9,35 @@ import { useAppState } from "../api/AppStateContext";
 import ConfirmBoutton from "./components/confirmBoutton";
 import ConfirmText from "./components/confirmText";
 
-const Tutorial = () => {
+const Start = () => {
   const [ridersDataa, setRidersData] = useState(RidersData);
   const [data, setData] = useState(RidersData);
 
-  const { appState, classementState, updateAddItemById, updateAddClassement, updateRemoveClassement } =
-    useAppState();
+  const {
+    appState,
+    classementState,
+    classementStateItem,
+    updateAddItemById,
+    updateAddClassement,
+    updateRemoveClassement,
+    updateAddClassementItem,
+    updateRemoveClassementItem,
+  } = useAppState();
 
   // useEffect pour observer les changements d'état
-//     useEffect(() => {
-//   console.log("Nouvel état : ", classementState);
-//     }, [classementState]);
-
+  useEffect(() => {
+    console.log("Nouvel état : ", classementStateItem);
+  }, [classementStateItem]);
 
   const showNextRider = (id: number, type: string, cardid: number) => {
     const updatedRidersData = [...ridersDataa];
     if (type === "add") {
-        updateAddClassement(updatedRidersData[cardid].firstName + " " + updatedRidersData[cardid].lastName);
+      updateAddClassement(
+        updatedRidersData[cardid].firstName +
+          " " +
+          updatedRidersData[cardid].lastName
+      );
+      updateAddClassementItem(RidersData[cardid]);
       if (updatedRidersData[id].id != updatedRidersData[4].id) {
         // Relalive au cards avec les nombres
         updatedRidersData[id].isActif = false;
@@ -44,7 +56,8 @@ const Tutorial = () => {
         setRidersData(updatedRidersData);
       }
     } else {
-        updateRemoveClassement();
+      updateRemoveClassement();
+      updateRemoveClassementItem();
       if (cardid != updatedRidersData.length + 1) {
         if (updatedRidersData[id + 1]?.isActif === true) {
           // Mettre la data pour afficher les cards en haut à jour
@@ -167,4 +180,4 @@ const Tutorial = () => {
   );
 };
 
-export default Tutorial;
+export default Start;

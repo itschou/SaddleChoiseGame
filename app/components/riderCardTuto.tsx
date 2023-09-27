@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { useDrag } from "react-dnd";
 import { useEffect, useState } from "react";
 import RidersData from "../data/ridersData";
+import RiderScore from "./riderScore";
 
 interface Props {
   id: number;
@@ -23,7 +24,6 @@ const RiderCardTuto: NextPage<Props> = ({
   const [isActif, setActif] = useState<boolean>(true);
   const [ridersDataa, setRidersData] = useState(RidersData);
 
-
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "image",
     item: { id: id },
@@ -37,16 +37,15 @@ const RiderCardTuto: NextPage<Props> = ({
     },
   }));
 
-
   return (
     <>
       {isActif ? (
         <div
           className="card pl-2 pr-2 drop-area"
           style={{
-            touchAction: isDragging ? 'none' : 'auto', // Désactiver le zoom sur le glissement
-            cursor: isDragging ? 'grabbing' : 'grab',
-            opacity: isDragging ? 0 : 1
+            touchAction: isDragging ? "none" : "auto", // Désactiver le zoom sur le glissement
+            cursor: isDragging ? "grabbing" : "grab",
+            opacity: isDragging ? 0 : 1,
           }}
         >
           <div
@@ -78,17 +77,8 @@ const RiderCardTuto: NextPage<Props> = ({
             </div>
 
             <div className="absolute inset-x-0 bottom-0 z-20 p-4 text-black">
-              <div className="relative">
-                <p
-                  className="top-6 font-bold text-white absolute left-3"
-                  style={
-                    Number(score) <= 99
-                      ? { fontSize: "10px" }
-                      : { fontSize: "8px" }
-                  }
-                >
-                  {score}
-                </p>
+              <div className="relative top-10 -left-2">
+                <RiderScore score={score} />
               </div>
               <div className="relative top-3.5 left-10 uppercase cardTexte">
                 <h1

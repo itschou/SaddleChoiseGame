@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useAppState } from "../api/AppStateContext";
 
-import ConfirmBoutton from "./components/confirmBoutton";
-import ConfirmText from "./components/confirmText";
 import RiderCardFillableTuto from "../components/riderCardFillableTuto";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
@@ -32,12 +30,12 @@ const Tutorial = () => {
   } = useAppState();
 
   const handleStateChange = (title:string, subtitle:string) => {
-    setIsAnimating(true);
-    setTimeout(() => {
+    // setIsAnimating(true);
+
       setTutorialTextTitle(title)
       setTutorialTextSubtitle(subtitle)
       setIsAnimating(false);
-    }, 1000);
+
   };
 
   // useEffect pour observer les changements d'état
@@ -48,13 +46,13 @@ const Tutorial = () => {
   const showNextRider = (id: number, type: string, cardid: number) => {
     const updatedRidersData = [...ridersDataa];
     if (type === "add") {
-      setSteps(1);
       handleStateChange("CHANGE YOUR MIND?", "REPLACE THE PILOT CARD IN ITS INITIAL POSITION BY CLICKING ON IT");
       updateAddClassement(
         updatedRidersData[cardid].firstName +
-          " " +
-          updatedRidersData[cardid].lastName
-      );
+        " " +
+        updatedRidersData[cardid].lastName
+        );
+        setSteps(1);
       if (updatedRidersData[id].id != updatedRidersData[4].id) {
         // Relalive au cards avec les nombres
         updatedRidersData[id].isActif = false;
@@ -75,6 +73,7 @@ const Tutorial = () => {
     } else {
       handleStateChange("GREAT, GOOD JOB", "YOU'LL BE STARTING IN A MOMENT...");
       updateRemoveClassement();
+      setSteps(2);
       if (cardid != updatedRidersData.length + 1) {
         if (updatedRidersData[id + 1]?.isActif === true) {
           // Mettre la data pour afficher les cards en haut à jour
@@ -150,7 +149,7 @@ const Tutorial = () => {
   return (
     <div>
       <div className="tutorialMainDiv z-30"></div>
-      <Image src="/images/card/click.png" alt="Click Image" className={steps === 0 ? `absolute flex image-animation z-50` : `absolute flex image-animation-static z-50`} width={100} height={100} />
+      <Image src="/images/card/click.png" alt="Click Image" className={`absolute flex z-50 ${steps === 0 ? 'image-animation' : (steps === 1 ? 'image-animation-static' : (steps === 2 ? 'hidden' : ''))}`} width={100} height={100} />
       <div className="m-0">
         <div className="pt-9">
           <h1 className="flex items-center justify-center font-bold">
@@ -164,15 +163,13 @@ const Tutorial = () => {
             PREDICT THE RANKING OF CWD RIDERS AT THE FEI 5* WORLD CUP IN
             TORONTO.
           </h1>
-          {/* Afficher le texte après avoir fini le jeu */}
-          <ConfirmText />
         </div>
 
         <div className="tutorialText">
-          <h1 className={`text-center font-sans text-white relative z-50 text-3xl top-32 left-24 whitespace-pre-line ${ isAnimating ? 'fadeOut' : 'fadeIn' } transition-opacity`}>
+          <h1 className={`text-center font-sans text-white relative z-50 text-3xl top-32 left-24 whitespace-pre-line`}>
             {tutorialTextTitle}
           </h1>
-          <p className={`text-center font-sans text-white relative z-50 top-32 whitespace-pre-line ${ isAnimating ? 'fadeOut' : 'fadeIn' } transition-opacity`}>
+          <p className={`text-center font-sans text-white relative z-50 top-32 whitespace-pre-line`}>
             {tutorialTextSubtitle}
           </p>
         </div>
@@ -205,9 +202,6 @@ const Tutorial = () => {
             );
           })}
         </div>
-
-        {/* Afficher le boutton après avoir fini le jeu */}
-        <ConfirmBoutton />
       </div>
     </div>
   );
