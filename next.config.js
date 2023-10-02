@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {webpack: (config, { isServer }) => {
-    // Exclure les fichiers inutiles lors de la compilation du serveur
-    if (isServer) {
-      config.externals = ['@firebase/app', '@firebase/firestore']
-    }
+require('dotenv').config();
+const nextConfig = {
+  output: "export",
+  assetPrefix: "./",
+  images: {
+    unoptimized: true,
+  },
+};
 
-    return config;
-  },}
-
-module.exports = nextConfig
+module.exports = nextConfig;

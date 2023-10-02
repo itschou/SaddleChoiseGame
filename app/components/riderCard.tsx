@@ -38,6 +38,7 @@ const RiderCard: NextPage<Props> = ({
       }
     },
   }));
+  
 
   return (
     <>

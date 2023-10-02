@@ -1,10 +1,18 @@
+"use client";
 import Logo from "@/public/images/welcomePage/Logo";
+import { useRouter } from "next/navigation";
 
 import data from "./data/welcomeData";
 import WelcomeCourones from "./components/welcomeCourones";
 import Link from "next/link";
 
 export default function Home() {
+  const router = useRouter();
+
+  const goToTutorial = () => {
+    const path = `tutorial.html`;
+    router.push(path);
+  };
   return (
     <div>
       {/* Header */}
@@ -20,11 +28,12 @@ export default function Home() {
         <h1 className="text-bold">WHO WILL BE THE BEST</h1>
         <h1 className="text-bold">CWD RIDER OF THE COMPETITION?</h1>
         <div className="pt-3 pb-3">
-          <Link href='/tutorial'>
-            <button className="hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
-              PLAY!
-            </button>
-          </Link>
+          <button
+            onClick={goToTutorial}
+            className="hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
+          >
+            PLAY!
+          </button>
         </div>
       </div>
 

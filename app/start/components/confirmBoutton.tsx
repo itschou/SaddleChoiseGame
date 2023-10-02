@@ -9,6 +9,10 @@ const ConfirmBoutton = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const folderLocation = process.env.FOLDER_LOCATION;
+  const finishPath = process.env.FINISH_PATH;
+  const path = `${folderLocation}/${finishPath}`;
+
   const storeData = () => {
     setIsLoading(true);
     const jsonData = JSON.stringify(classementStateItem);
@@ -64,7 +68,7 @@ const ConfirmBoutton = () => {
         if (response.status === 200) {
           console.log("Données mises à jour avec succès.");
           // Redirection vers la page final
-          push("/finish");
+          push("finish.html");
           setIsLoading(false);
         } else {
           console.error("Erreur lors de la mise à jour des données.");

@@ -45,6 +45,11 @@ const Tutorial = () => {
 
   const showNextRider = (id: number, type: string, cardid: number) => {
     const updatedRidersData = [...ridersDataa];
+
+    const folderLocation = process.env.FOLDER_LOCATION;
+    const startPath = process.env.START_PATH;
+    const path = `${folderLocation}/${startPath}`;
+
     if (type === "add") {
       handleStateChange("CHANGE YOUR MIND?", "REPLACE THE PILOT CARD IN ITS INITIAL POSITION BY CLICKING ON IT");
       updateAddClassement(
@@ -130,7 +135,7 @@ const Tutorial = () => {
         // Mise à jour de la Data pour faire un mapping
         setRidersData(updatedRidersData);
         setTimeout(() => {
-          push('/start');
+          push('start.html');
         }, 3000);
       } else {
         // Remettre la data pour afficher les cards en haut à jour

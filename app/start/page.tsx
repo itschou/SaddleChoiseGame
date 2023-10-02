@@ -13,6 +13,7 @@ const Start = () => {
   const [ridersDataa, setRidersData] = useState(RidersData);
   const [data, setData] = useState(RidersData);
 
+  
   const {
     appState,
     classementState,
@@ -25,9 +26,9 @@ const Start = () => {
   } = useAppState();
 
   // useEffect pour observer les changements d'état
-  useEffect(() => {
-    console.log("Nouvel état : ", classementStateItem);
-  }, [classementStateItem]);
+  // useEffect(() => {
+  //   console.log("Nouvel état : ", classementStateItem);
+  // }, [classementStateItem]);
 
   const showNextRider = (id: number, type: string, cardid: number) => {
     const updatedRidersData = [...ridersDataa];

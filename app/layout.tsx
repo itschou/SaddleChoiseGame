@@ -5,10 +5,11 @@ import "../public/css/main.css";
 import "../public/css/tutorial.css";
 import "../public/css/start.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import { AppStateProvider } from "./api/AppStateContext";
+import React, { Suspense } from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -21,10 +22,12 @@ export default function RootLayout({
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         </head>
-        <body className={inter.className}>
+        <body>
+          <Suspense fallback={<div>Loading...</div>}/>
           <AppStateProvider>{children}</AppStateProvider>
         </body>
       </html>
     </DndProvider>
   );
 }
+
